@@ -24,25 +24,25 @@ export default function RegisterForm() {
         <input
           type="email"
           placeholder="Enter Email"
-          className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+          className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] text-[14px] text-[#000] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
         />
 
         <input
           type="text"
           placeholder="Enter Username"
-          className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+          className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] text-[14px] text-[#000] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
         />
 
         <input
           type="password"
           placeholder="Enter Password"
-          className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+          className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] text-[14px] text-[#595959] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
         />
 
         <input
           type="password"
           placeholder="Confirm Password"
-          className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+          className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] text-[14px] text-[#595959] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
         />
 
         {/* Terms */}

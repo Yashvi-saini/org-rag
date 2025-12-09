@@ -26,7 +26,7 @@ export default function LoginForm() {
         <input
           type="email"
           placeholder="Enter Email"
-          className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+          className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] text-[14px] text-[#000] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
         />
 
         {/* Password with eye toggle */}
@@ -34,7 +34,7 @@ export default function LoginForm() {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
-            className="h-[44px] w-full rounded-[6px] border border-[#D9D9D9] px-[16px] pr-[44px] text-[14px] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
+            className="h-[44px] w-full rounded-[6px] border border-[#999999] px-[16px] pr-[44px] text-[14px] text-[#595959] placeholder:text-[#8A8A8A] focus:outline-none focus:ring-2 focus:ring-[#0B76FF1A]"
           />
           <button
             type="button"
