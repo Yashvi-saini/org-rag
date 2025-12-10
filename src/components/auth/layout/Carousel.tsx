@@ -9,7 +9,7 @@ export default function Carousel({ images }: { images: string[] }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
-    }, 5000); //image is changed 5 sec 
+    }, 3000); //image is changed 3 sec 
     
     return () => clearInterval(interval);
   }, [images]);

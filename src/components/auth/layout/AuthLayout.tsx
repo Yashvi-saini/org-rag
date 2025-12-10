@@ -1,5 +1,8 @@
 import Carousel from "./Carousel";
 import Image from "next/image";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export default function AuthLayout({ children, images, contentTop = 30 }: {
   children: React.ReactNode;
@@ -8,7 +11,7 @@ export default function AuthLayout({ children, images, contentTop = 30 }: {
   contentTop?: number;
 }) {
   return (
-    <div className="flex w-[1439px] mx-auto min-h-screen bg-[#003259] overflow-hidden">
+    <div className={`${poppins.className} flex w-[1439px] mx-auto min-h-screen bg-[#003259] overflow-hidden`}>
       
       {/* Left Carousel */}
       <div className="hidden md:flex w-[628px] h-full bg-[#003259]">
