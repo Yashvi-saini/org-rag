@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 import IdentifierInput from "@/components/inputfield_ui/IdentifierInput";
 import PasswordInput from "@/components/inputfield_ui/PasswordInput";
 import { useForm } from "react-hook-form";
@@ -15,6 +16,7 @@ type FormValues = {
 };
 
 export default function LoginForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const {
     register,
@@ -42,7 +44,15 @@ export default function LoginForm() {
       </div>
 
       {/* Form */}
-      <form className="mt-[30px] flex flex-col gap-[30px] items-center w-full" noValidate autoComplete="off" onSubmit={handleSubmit(() => {})}>
+      <form
+        className="mt-[30px] flex flex-col gap-[30px] items-center w-full"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit(() => {
+          // On successful login, navigate to dashboard
+          router.push("/dummydash");
+        })}
+      >
         {/* Identifier (Email) with floating label */}
         <IdentifierInput
           name="email"

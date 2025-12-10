@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignupSchema, type SignupSchemaType } from "@/lib/authvalidations/signup.schema";
@@ -10,6 +11,7 @@ import PasswordInput from "@/components/inputfield_ui/PasswordInput";
 
 
 export default function RegisterForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -48,7 +50,9 @@ export default function RegisterForm() {
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit((data) => {
-          console.log("signup submit", data);
+          // Navigate to verify OTP for signup flow
+          const email = encodeURIComponent(data.email);
+          router.push(`/verify?mode=signup&email=${email}`);
         })}
       >
         {/* Identifier (Email) */}

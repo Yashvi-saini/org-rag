@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { resetPasswordSchema, type ResetPasswordSchemaType } from "@/lib/authvalidations/resetPassword.schema";
@@ -9,6 +8,7 @@ import PasswordInput from "@/components/inputfield_ui/PasswordInput";
 
 
 export default function ResetPasswordForm() {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors }, watch } = useForm<ResetPasswordSchemaType>({
     resolver: zodResolver(resetPasswordSchema),
     mode: "onChange",
@@ -29,7 +29,15 @@ export default function ResetPasswordForm() {
       </div>
 
       {/* Form */}
-      <form className="mt-[30px] flex flex-col gap-[30px] items-center w-full" noValidate autoComplete="off" onSubmit={handleSubmit(() => {})}>
+      <form
+        className="mt-[30px] flex flex-col gap-[30px] items-center w-full"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit(() => {
+          // After reset, navigate to dashboard
+          router.push("/dummydash");
+        })}
+      >
         {/* New password */}
         <PasswordInput
           name="password"

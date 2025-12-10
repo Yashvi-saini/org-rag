@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { forgotPasswordSchema, type ForgotPasswordSchemaType } from "@/lib/authvalidations/forgotPassword.schema";
@@ -8,6 +9,7 @@ import IdentifierInput from "@/components/inputfield_ui/IdentifierInput";
 
 
 export default function ForgotPasswordForm() {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors }, watch } = useForm<ForgotPasswordSchemaType>({
     resolver: zodResolver(forgotPasswordSchema),
     mode: "onBlur",
@@ -27,7 +29,16 @@ export default function ForgotPasswordForm() {
       </div>
 
       {/* Form */}
-      <form className="mt-[30px] flex flex-col gap-[30px] items-center w-full" noValidate autoComplete="off" onSubmit={handleSubmit(() => {})}>
+      <form
+        className="mt-[30px] flex flex-col gap-[30px] items-center w-full"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit((data) => {
+          // Navigate to verify OTP for forgot-password flow
+          const email = encodeURIComponent(data.email);
+          router.push(`/verify?mode=forgot&email=${email}`);
+        })}
+      >
         <IdentifierInput
           name="email"
           label="Enter Email"

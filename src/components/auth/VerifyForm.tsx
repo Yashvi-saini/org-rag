@@ -2,8 +2,12 @@
 
 import React from "react";
 import OtpInput, { ResendOtpButton } from "@/components/inputfield_ui/OtpInput";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function VerifyForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const mode = searchParams.get("mode") || "signup";
   const [otp, setOtp] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [resendKey, setResendKey] = React.useState<number | null>(null);
@@ -21,21 +25,17 @@ export default function VerifyForm() {
   };
 
   const verify = async () => {
-    // will replace with API call
+    // Simulate verify: allow any 6-digit OTP for now
     if (otp.length !== 6) {
-      setError("Enter OTP");
+      setError("Enter 6-digit OTP");
       return;
     }
-    // Prevent repeated verify calls during cooldown
-    if (cooldownActive) {
-      return;
+    // On success, navigate based on mode
+    if (mode === "forgot") {
+      router.push("/reset-password");
+    } else {
+      router.push("/dummydash");
     }
-    // invalid for now
-    setError("OTP invalid, Try again");
-
-    // Start 30s timer only after a full OTP verify attempt
-    setResendKey(Date.now());
-    setCooldownActive(true);
   };
 
   return (
