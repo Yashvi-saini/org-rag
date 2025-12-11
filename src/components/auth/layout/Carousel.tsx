@@ -7,22 +7,29 @@ export default function Carousel({ images }: { images: string[] }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
-    }, 3000); //image is changed 3 sec 
-    
+    const interval = setInterval(
+      () => setIndex((i) => (i + 1) % images.length),
+      3000 // 3 seconds
+    );
+
     return () => clearInterval(interval);
-  }, [images]);
+  }, [images.length]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <Image
-        src={images[index]}
-        alt="auth-image"
-        width={628}
-        height={1025}
-        className="object-contain"
-      />
+    <div className="relative w-full h-full overflow-hidden">
+      {images.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt="carousel-image"
+          width={628}
+          height={1025}
+          className={`
+            absolute inset-0 object-contain transition-opacity duration-700
+            ${i === index ? "opacity-100" : "opacity-0"}
+          `}
+        />
+      ))}
     </div>
   );
 }

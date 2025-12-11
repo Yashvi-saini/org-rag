@@ -117,10 +117,10 @@ export default function RegisterForm() {
         </button>
 
         {/* Divider */}
-        <div className={`mt-[6px] w-full flex items-center gap-3 text-[14px] text-[#6B6B6B]`}>
-          <div className="h-px flex-1 bg-[#E6E6E6]" />
+        <div className={`mt-[6px] w-full flex items-center gap-3 text-[14px] text-[#595959]`}>
+          <div className="h-px flex-1 bg-[#595959]" />
           <span>Or Sign Up With</span>
-          <div className="h-px flex-1 bg-[#E6E6E6]" />
+          <div className="h-px flex-1 bg-[#595959]" />
         </div>
 
         {/* Social buttons */}

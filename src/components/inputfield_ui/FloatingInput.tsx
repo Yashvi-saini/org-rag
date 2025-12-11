@@ -76,7 +76,7 @@ export default function FloatingInput({
           "peer block w-full rounded-md",
           "border",
           "bg-white",
-          "border-[#595959]",
+          "border-[#999999]",
           showEyeToggle ? "px-4 pt-4 pb-2 pr-11" : "px-4 pt-4 pb-2",
           showEyeToggle && type === "password" && !show
             ? "text-sm outline-none text-[#595959]"
