@@ -4,13 +4,13 @@ import SignUpFormForm from "@/components/auth/SignUpForm";
 export default function RegisterPage() {
 
   const images = [
-    "/auth/signup1.svg",
-    "/auth/signup2.svg",
-    "/auth/signup3.svg",
+    "/auth/sign up 1.svg",
+    "/auth/sign up 2.svg",
+    "/auth/sign up 3.svg",
   ];
 
   return (
-    <AuthLayout images={images} contentTop={33}>
+    <AuthLayout images={images} contentTop={33} showControls>
       <SignUpFormForm />
     </AuthLayout>
   );

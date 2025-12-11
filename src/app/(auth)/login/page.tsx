@@ -4,13 +4,13 @@ import LoginForm from "@/components/auth/LoginForm";
 export default function LoginPage() {
 
   const images = [
-    "/auth/login1.svg",
-    "/auth/login2.svg",
-    "/auth/login3.svg",
+    "/auth/Login 1.svg",
+    "/auth/Login 2.svg",
+    "/auth/Login 3.svg",
   ];
 
   return (
-    <AuthLayout images={images} contentTop={63}>
+    <AuthLayout images={images} contentTop={63} showControls>
       <LoginForm />
     </AuthLayout>
   );
