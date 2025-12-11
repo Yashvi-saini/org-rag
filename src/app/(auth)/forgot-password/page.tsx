@@ -3,7 +3,7 @@ import ForgotPasswordForm from "@/components/auth/ForgotPasswordForm";
 
 export default function ForgotPasswordPage() {
   const images = [
-    "/auth/forgot.svg",
+    "/auth/Forgot.svg",
    
   ];
 

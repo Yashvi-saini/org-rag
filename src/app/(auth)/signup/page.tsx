@@ -5,8 +5,8 @@ export default function RegisterPage() {
 
   const images = [
     "/auth/sign up 1.svg",
-    "/auth/sign up 2.svg",
-    "/auth/sign up 3.svg",
+    "/auth/sign Up 2.svg",
+    "/auth/sign Up 3.svg",
   ];
 
   return (
