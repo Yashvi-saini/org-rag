@@ -63,7 +63,7 @@ export default function OtpInput({ length = 6, onChange, onComplete, error, isVe
 	const successGreen = "#00C896";
 
 	return (
-		<div className={`w-full flex items-center justify-between gap-[22px] ${className}`}>
+		<div className={`w-full flex items-center justify-between gap-1 sm:gap-[10px] md:gap-[22px] ${className}`}>
 			{Array.from({ length }).map((_, i) => {
 				const isActive = active === i;
 				const hasVal = values[i] !== "";
@@ -71,12 +71,15 @@ export default function OtpInput({ length = 6, onChange, onComplete, error, isVe
 				const allEmpty = values.every((v) => v === "");
 				const showError = !allEmpty && !!error;
 				const bottomShadow = showError
-					? `0 8px 0 0 ${errorRed}`
+					? `0 4px 0 0 ${errorRed}`
 					: allFilled
-					? `0 8px 0 0 ${successGreen}`
-					: isActive || hasVal
-					? `0 8px 0 0 ${activeBlue}`
-					: "none";
+						? `0 4px 0 0 ${successGreen}`
+						: isActive || hasVal
+							? `0 4px 0 0 ${activeBlue}`
+							: "none";
+
+				const shadowSize = '4px';
+
 				return (
 					<input
 						key={i}
@@ -90,10 +93,10 @@ export default function OtpInput({ length = 6, onChange, onComplete, error, isVe
 						inputMode="numeric"
 						pattern="[0-9]*"
 						maxLength={1}
-						className="w-[84px] h-[80px] rounded-[25px] text-center text-[24px] font-[700] text-[#000] outline-none bg-[#D9EEFF]"
+						className="w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] md:w-[84px] md:h-[80px] rounded-[10px] md:rounded-[25px] text-center text-[18px] md:text-[24px] font-[700] text-[#000] outline-none bg-[#D9EEFF]"
 						style={{
 							border: "none",
-							boxShadow: bottomShadow,
+							boxShadow: isActive || hasVal || allFilled || showError ? `0 ${typeof window !== 'undefined' && window.innerWidth >= 768 ? '8px' : '4px'} 0 0 ${showError ? errorRed : allFilled ? successGreen : activeBlue}` : 'none',
 						}}
 					/>
 				);
@@ -151,15 +154,15 @@ export function ResendOtpButton({
 			type="button"
 			disabled={!clickable}
 			onClick={() => {
-				onResend(); 
+				onResend();
 				start();
 			}}
-			className={`h-[58px] w-full rounded-[10px] border ${
-				clickable ? "border-[#0B76FF] text-[#0B76FF] bg-white hover:bg-[#F5F9FF]" : "border-[#737373] text-[#737373] bg-white"
-			} text-[16px] font-[700] transition-colors`}
+			className={`w-full text-[14px] font-[500] text-right md:text-center md:text-[16px] md:font-[700] md:h-[58px] md:rounded-[10px] md:border transition-colors ${clickable
+				? "text-[#0B76FF] md:bg-white md:border-[#0B76FF] md:hover:bg-[#F5F9FF]"
+				: "text-[#737373] md:bg-white md:border-[#737373]"
+				}`}
 		>
-			{clickable ? "Resend OTP" : started && remaining > 0 ? `Resend OTP in ${remaining}s` : "Resend OTP"}
+			{clickable ? "Resend OTP" : started && remaining > 0 ? `${remaining} sec to Resend OTP` : "Resend OTP"}
 		</button>
 	);
 }
-

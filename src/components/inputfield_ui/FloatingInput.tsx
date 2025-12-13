@@ -49,15 +49,17 @@ export default function FloatingInput({
   const computedBorderColor = isError
     ? errorColor
     : isFocused
-    ? activeColor
-    : isValidWithValue
-    ? activeColor
-    : undefined;
+      ? activeColor
+      : isValidWithValue
+        ? activeColor
+        : undefined;
   const computedLabelColor = isError
     ? errorColor
     : isFocused
-    ? activeColor
-    : undefined;
+      ? activeColor
+      : isValidWithValue
+        ? activeColor
+        : undefined;
 
   const inputType = type === "password" ? (show ? "text" : "password") : type;
 
@@ -65,37 +67,41 @@ export default function FloatingInput({
     <div className={`w-full ${className}`}>
       <div className="relative w-full">
         <input
-        id={name}
-        name={name}
-        type={inputType}
-        disabled={disabled}
-        autoComplete={autoComplete}
-        spellCheck={spellCheck}
-        maxLength={maxLength}
-        className={[
-          "peer block w-full rounded-md",
-          "border",
-          "bg-white",
-          "border-[#999999]",
-          showEyeToggle ? "px-4 pt-4 pb-2 pr-11" : "px-4 pt-4 pb-2",
-          showEyeToggle && type === "password" && !show
-            ? "text-sm outline-none text-[#595959]"
-            : "text-sm outline-none text-[#000000]",
-          disabled ? "opacity-60 cursor-not-allowed" : "",
-        ].join(" ")}
-        placeholder={!isFocused && !hasValue ? label : " "}
-        value={value}
-        onChange={onChange}
-        onFocus={(e) => {
-          setIsFocused(true);
-          onFocus?.(e);
-        }}
-        onBlur={(e) => {
-          setIsFocused(false);
-          onBlur?.(e);
-        }}
-        {...(register || {})}
-        style={{ borderColor: computedBorderColor }}
+          {...(register || {})}
+          id={name}
+          name={name}
+          type={inputType}
+          disabled={disabled}
+          autoComplete={autoComplete}
+          spellCheck={spellCheck}
+          maxLength={maxLength}
+          className={[
+            "peer block w-full rounded-md",
+            "border",
+            "bg-white",
+            "border-[#999999]",
+            showEyeToggle ? "px-4 pt-4 pb-2 pr-11" : "px-4 pt-4 pb-2",
+            showEyeToggle && type === "password" && !show
+              ? "text-sm outline-none text-[#595959]"
+              : "text-sm outline-none text-[#000000]",
+            disabled ? "opacity-60 cursor-not-allowed" : "",
+          ].join(" ")}
+          placeholder={!isFocused && !hasValue ? label : " "}
+          value={value}
+          onChange={(e) => {
+            register?.onChange?.(e);
+            onChange?.(e);
+          }}
+          onFocus={(e) => {
+            setIsFocused(true);
+            onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            register?.onBlur?.(e);
+            setIsFocused(false);
+            onBlur?.(e);
+          }}
+          style={{ borderColor: computedBorderColor }}
         />
 
         {showEyeToggle && type === "password" && (
@@ -109,7 +115,7 @@ export default function FloatingInput({
           </button>
         )}
 
-        {isFocused && (
+        {(isFocused || hasValue) && (
           <label
             htmlFor={name}
             className={[
